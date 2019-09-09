@@ -1,5 +1,5 @@
 endpoint: http://localhost:4466
-datamodel: datamodel.prisma
+datamodel: datamodel.graphql
 
 generate:
   - generator: javascript-client
@@ -7,4 +7,5 @@ generate:
 
 hooks:
   post-deploy:
+    - prisma generate
     - npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma --js
